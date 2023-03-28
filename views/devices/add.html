@@ -1,0 +1,277 @@
+<!doctype html>
+<html class="h-full bg-gray-100">
+    <head>
+        <title>My Smart Home! - add device page</title>
+        <link href="../dist/output.css" type="text/css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        }
+                    } 
+                }
+            }
+        </script>
+    </head>
+    <body class="h-full">
+        <div class="min-h-full">
+            <nav class="bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                        <img class="h-8 w-8" src="../src/logo1.png" alt="Workflow">
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <a href="../index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">HOME</a>
+                
+                                <a href="../about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ABOUT</a>
+                
+                                <a href="index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">SHOW DEVICES</a>
+                
+                                <a href="add" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">ADD DEVICES</a>
+                
+                                <a href="control" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">UPDATE DEVICES</a>
+
+                                <a href="delete" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">DELETE DEVICES</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="-mr-2 flex md:hidden">
+                        <!-- Mobile menu button -->
+                        <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <!--
+                                Heroicon name: outline/menu
+                
+                                Menu open: "hidden", Menu closed: "block"
+                            -->
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <!--
+                                Heroicon name: outline/x
+                
+                                Menu open: "block", Menu closed: "hidden"
+                            -->
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                    <a href="../index" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">HOME</a>
+            
+                    <a href="../about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ABOUT</a>
+            
+                    <a href="index" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">SHOW DEVICES</a>
+            
+                    <a href="add" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">ADD DEVICES</a>
+            
+                    <a href="control" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">UPDATE DEVICES</a>
+                            
+                    <a href="delete" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">DELETE DEVICES</a>
+                </div>
+            </div>
+            </nav>
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+                </div>
+            </header>
+                
+            <main>
+                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                    <!-- Replace with your content -->
+                    <div class="px-4 py-6 sm:px-0">
+                        <div class="border-4 border-dashed border-gray-200 rounded-lg h-full">
+                            <h1 class="text-3xl font-bold">This is Device Add Page </h1>
+                            <h3>You can add devices here:</h3>
+
+
+                            <!-- select device name from a pre-defined set of devices -->
+                            <form method="GET" action="/devices/add">
+                                <select id="dev_name" name="device_type" class="origin-top-left left-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <option value="" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Please choose your device</option>
+                                    <option value="speaker" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Speaker</option>
+                                    <option value="door" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Door</option>
+                                    <option value="lighting" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Lighting</option>
+                                    <option value="curtain" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Curtain</option>
+                                    <option value="heating" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Heating</option>
+                                    <option value="tv" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">TV</option>
+                                </select><br><br>
+                                <button type="submit" value="continue" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Continue</button>
+                            </form><br><br>
+                            <% if (message.length) { %>                          
+                            <div class="flex justify-between text-green-200 shadow-inner rounded p-3 bg-green-600">
+                                <p class="self-center">
+                                <strong>Success </strong><%= message %>
+                                </p>
+                                <strong class="text-xl align-center cursor-pointer alert-del">&times;</strong>
+                            </div>
+                            <% } %>
+                            <div id="deviceadd">
+                            <% if (device_command_type.length) { %>
+                                <div class="md:grid md:grid-cols-3 md:gap-6">
+                                    <div class="md:col-span-1">
+                                        <div class="px-4 sm:px-0">
+                                            <h2 class="text-lg font-bold leading-6 text-gray-900">Device Form</h3><br><br>
+                                            <p class="mt-1 text-sm text-gray-600">This information need to fill before adding your devices. <br><br>Remember give your device a meaning full name so that your can find it. <br><br>Right slide the button to open or on.<br><br> </p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 md:mt-0 md:col-span-2">
+                                        <form id="cmdForm" method="POST" action="/devices/add">
+                                            <input type="hidden" name="device_type" value="<%= device_command_type[0].device_type %>" > 
+                                            <div class="shadow overflow-hidden sm:rounded-md">
+                                                <div class="px-4 py-5 bg-white sm:p-6">
+                                                    <div class="grid grid-cols-6 gap-6">
+                                                        <div class="col-span-6 form-control">
+                                                            <label for="nickname" class="block text-sm font-medium text-gray-700">Give this <%= device_command_type[0].device_type %> a name:</label><br><br>
+                                                            <input type="text" name="device_name" id="nickname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"><br>
+                                                            <small class="block text-sm font-medium text-gray-500 hidden">Error message</small><br><br>
+                                                        </div>
+                                                        <%device_command_type.forEach(function(element){%>
+                                                            <% if (element.command_type == "on/off" || element.command_type == "open/close") { %>
+                                                                <div class="col-span-6"> 
+                                                                    <label class="block text-sm font-medium text-gray-700">Set <%= element.device_type %> <%= element.command_type %>:</label><br><br>
+                                                                    <label class="bg-gray-100 w-20 h-10 rounded-full cursor-pointer relative flex justify-between items-center group p-2 text-xl"> 
+                                                                    <input id="checkOn" type="checkbox" name="<%= element.command_type %>" value="0" class="sr-only peer" onchange=change()>
+                                                                    <span class="w-2/5 h-4/5 bg-gray-300 shadow-lg absolute rounded-full left-1 top-1 peer-checked:bg-green-600 peer-checked:left-11 transition-all duration-500"></span>
+                                                                    </label><br><br>
+                                                                </div>
+                                                            <% } else {%>
+                                                                <div class="col-span-6 has-tooltip">
+                                                                    <div class="col-span-6 form-control">
+                                                                        <label for="cmdType" class="block text-sm font-medium text-gray-700">Set <%= element.device_type %> <%= element.command_type %>:</label><br><br>
+                                                                        <span class="tooltip rounded shadow-lg p-1 text-white whitespace-no-wrap bg-black -mt-10" id="slidervalue"></span>
+                                                                        <input id="cmdType" type="range" name="<%= element.command_type %>" min="<%= element.min_parameter %>" max="<%= element.max_parameter %>" value="<%= element.default_parameter %>" step="1" class="w-full h-8 bg-gray-200 rounded-lg appearance-none cursor-pointer hover:bg-gray-500">
+                                                                        <small class="block text-sm font-medium text-gray-500 hidden">Error message</small><br><br>
+                                                                    </div>
+                                                                </div>
+                                                            <%}%>
+                                                        <% }) %>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                            <button id="submitForm" type="submit" value="Add Device" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add Device</button><br><br>
+                                        </form>
+                                    </div>
+                                </div>
+                            <%}%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+        <script>
+            const form = document.getElementById('cmdForm');
+            const submitForm = document.getElementById('submitForm');
+            const commandType = document.getElementById('cmdType');
+            const deviceName = document.getElementById('nickname');
+            if (form){
+                form.addEventListener('change', (event) => {
+                    event.preventDefault();
+                    let bool1 = checkInputs(deviceName);
+                    let bool2 = checkInputs(commandType);
+                    if (bool1 && bool2){
+                        submitForm.removeAttribute("disabled");
+                    }else{
+                        submitForm.setAttribute("disabled","true");
+                    }
+                });
+            }
+
+            checkInputs = (check) => {
+                let checkValue = check.value;
+                if(checkValue == '') {
+                    setErrorFor(check, 'It cannot be blank');
+                } else if (!checkCommand(checkValue, check.name)) {
+                    setErrorFor(check, 'Not a valid input');
+                } else {
+                    setSuccessFor(check,'Alright!');
+                    return true;
+                }
+            }
+
+            setErrorFor = (input, message) => {
+                const formControl = input.parentElement;
+                const small = formControl.querySelector('small');
+                formControl.setAttribute('class','col-span-6 form-control error');
+                small.setAttribute('class','block text-sm font-medium text-red-500');
+                small.innerText = message;
+
+            }
+            
+            setSuccessFor = (input,message) => {
+                const formControl = input.parentElement;
+                const small = formControl.querySelector('small');
+                formControl.setAttribute('class','col-span-6 form-control success');
+                small.setAttribute('class','block text-sm font-medium text-gray-500 hidden');
+                small.innerText = message;
+            }
+    
+            checkCommand = (input, type) => {
+                // console.log(input,type);
+                if (type == "device_name"){
+                    return /^(?=[a-zA-Z0-9._]{5,30}$)(?!.*[_.]{2})[^_.].*[^_.]$/.test(input);
+                }
+                // [15,39] 
+                if (type == "temperature"){
+                    return /\b(0?1[5-9]|2[0-9]|3[0-9])\b/g.test(input);
+                }
+                // [0,69] 
+                if (type == "channel"){
+                    return /\b(0?[0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9])\b/g.test(input);
+                }
+                //[10,100]
+                if (type == "degree"){
+                    return /\b(0?1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9]|100)\b/g.test(input);
+                }
+                //[0,100]
+                if (type == "volume"){
+                    return /\b(0?[0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9]|100)\b/g.test(input);
+                }
+            }
+
+            change = ()=>{
+                let elements = document.getElementById("checkOn");
+                console.log(elements);
+                if (elements.checked=="true" ) {
+                    elements.setAttribute("value", "0");
+                } else {
+                    elements.setAttribute("value", "1");
+                }
+            }
+            let alert_del = document.querySelectorAll('.alert-del');
+            alert_del.forEach((x) =>
+                x.addEventListener('click', function () {
+                x.parentElement.classList.add('hidden');
+                })
+            );
+            let slider = document.getElementById("cmdType");
+            let output = document.getElementById("slidervalue");
+            output.innerHTML = slider.value; // Display the default slider value
+
+            // Update the current slider value (each time you drag the slider handle)
+            slider.oninput = function() {
+            output.innerHTML = this.value;
+            }
+        </script>
+    </body>
+</html>

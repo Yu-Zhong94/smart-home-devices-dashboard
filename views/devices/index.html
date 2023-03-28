@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="h-full bg-gray-100">
+    <head>
+        <title>My Smart Home! - show device page</title>
+        <link href="../dist/output.css" type="text/css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        }
+                    } 
+                }
+            }
+        </script>
+    </head>
+
+    <body class="h-full">
+        <div class="min-h-full">
+            <nav class="bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                        <img class="h-8 w-8" src="../src/logo1.png" alt="Workflow">
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <a href="../index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">HOME</a>
+                
+                                <a href="../about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ABOUT</a>
+                
+                                <a href="index" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">SHOW DEVICES</a>
+                
+                                <a href="add" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ADD DEVICES</a>
+                
+                                <a href="control" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">UPDATE DEVICES</a>
+
+                                <a href="delete" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">DELETE DEVICES</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="-mr-2 flex md:hidden">
+                        <!-- Mobile menu button -->
+                        <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                    <a href="../index" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">HOME</a>
+            
+                    <a href="../about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ABOUT</a>
+            
+                    <a href="index" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">SHOW DEVICES</a>
+            
+                    <a href="add" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ADD DEVICES</a>
+            
+                    <a href="control" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">UPDATE DEVICES</a>
+                            
+                    <a href="delete" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">DELETE DEVICES</a>
+                </div>
+            </div>
+            </nav>
+
+            <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+            </div>
+            </header>
+            
+            <main>
+                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                    <div class="px-4 py-6 sm:px-0">
+                        <div class="border-4 border-dashed border-gray-200 rounded-lg h-full">
+                            <h1 class="text-3xl font-bold"> This is Device Status Page </h1>
+                            <h3>You can see names and status of all available devices here:</h3>
+                            <!-- device selector  -->
+                            <form method="GET" action="/devices/index">
+                                <select id="select" name="device_id" class="origin-top-left left-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <option value="" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Please choose your device</option>
+                                    <% availableDevices.forEach(function(device){ %>
+                                        <option value="<%= device.id %>" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem"><%= device.device_name %>  <%= device.type_name %></option>
+                                    <% }) %>
+                                </select><br><br>
+                                <button type="submit" value="continue" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Continue</button>
+                            </form><br><br>
+                            <!-- show device information  -->
+                            <% if (viewDevice.length) { %> 
+                            <div id="deviceshow" class="bg-white shadow overflow-hidden sm:rounded-lg">
+                                <div class="px-4 py-5 sm:px-6">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Device Information</h3>
+                                </div>
+                                <div class="border-t border-gray-200">
+                                    <dl>
+                                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 shadow-lg">
+                                            <dt class="text-sm font-medium text-gray-500">Full name</dt>
+                                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= Device.device_name %></dd>
+                                        </div><br>
+                                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  shadow-lg">
+                                            <dt class="text-sm font-medium text-gray-500">Device for</dt>
+                                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= Device.type_name %></dd>
+                                        </div><br>
+                                        
+
+                                        <% viewDevice.forEach(function(device){ %>
+                                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 shadow-lg">
+                                            <dt class="text-sm font-medium text-gray-500">Device <%= device.type_name %></dt>
+                                            <% if ((device.type_name == "on/off"||device.type_name == "open/close")){ %>
+                                                <% if (device.device_parameter == "1") { %>  
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= device.type_name.split("/")[0] %></dd>
+                                                <% } else { %>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= device.type_name.split("/")[1] %></dd>
+                                                <% } %>
+                                            <% } else { %>
+                                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= device.device_parameter %></dd>
+                                            <% } %>
+                                        </div><br>
+                                        <% }) %>
+                                        
+                                    </dl>
+                                </div>
+                            </div>
+                            <% } %> 
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script>
+            const el = document.getElementById('select');
+
+            const deviceshow = document.getElementById('deviceshow');
+
+            el.addEventListener('change', function handleChange(event) {
+            if (event.target.value === 'show') {
+                deviceshow.style.display = 'block';
+            } else {
+                deviceshow.style.display = 'none';
+            }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html class="h-full bg-gray-100">
+    <head>
+        <title>My Smart Home! - delete device page</title>
+        <link href="../dist/output.css" type="text/css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        }
+                    } 
+                }
+            }
+        </script>
+    </head>
+    <body class="h-full">
+        <div class="min-h-full">
+            <nav class="bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                        <img class="h-8 w-8" src="../src/logo1.png" alt="Workflow">
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <a href="../index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">HOME</a>
+                
+                                <a href="../about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ABOUT</a>
+                
+                                <a href="index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">SHOW DEVICES</a>
+                
+                                <a href="add" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ADD DEVICES</a>
+                
+                                <a href="control" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">UPDATE DEVICES</a>
+
+                                <a href="delete" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">DELETE DEVICES</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="-mr-2 flex md:hidden">
+                        <!-- Mobile menu button -->
+                        <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <!--
+                                Heroicon name: outline/menu
+                
+                                Menu open: "hidden", Menu closed: "block"
+                            -->
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <!--
+                                Heroicon name: outline/x
+                
+                                Menu open: "block", Menu closed: "hidden"
+                            -->
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                    <a href="../index" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">HOME</a>
+            
+                    <a href="../about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ABOUT</a>
+            
+                    <a href="index" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">SHOW DEVICES</a>
+            
+                    <a href="add" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ADD DEVICES</a>
+            
+                    <a href="control" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">UPDATE DEVICES</a>
+                            
+                    <a href="delete" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">DELETE DEVICES</a>
+                </div>
+            </div>
+            </nav>
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+                </div>
+            </header>
+                
+            <main>
+                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                    <!-- Replace with your content -->
+                    <div class="px-4 py-6 sm:px-0">
+                        <div class="border-4 border-dashed border-gray-200 rounded-lg h-full">
+                            <h1 class="text-3xl font-bold">This is Device Delete Page </h1>
+                            <h3>You can delete devices here:</h3>
+                            <form method="GET" action="/devices/delete">
+                                <select id="select" name="device_id" class="origin-top-left left-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <option value="" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Please choose your device</option>
+                                    <% availableDevices.forEach(function(device){ %>
+                                        <option value="<%= device.id %>" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem"><%= device.device_name %>  <%= device.type_name %></option>
+                                    <% }) %>
+                                </select><br><br>
+                                <button type="submit" value="continue" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="delete-btn">Delete Device</button>
+                            </form><br><br>
+
+                            <% if (message.length) { %>                          
+                                <div class="flex justify-between text-green-200 shadow-inner rounded p-3 bg-green-600">
+                                    <p class="self-center">
+                                    <strong>Success </strong><%= message %>
+                                    </p>
+                                    <strong class="text-xl align-center cursor-pointer alert-del">&times;</strong>
+                                </div>
+                            <% } %>
+
+                            <% if (Device) {%> 
+                            <div class="bg-black bg-opacity-30 absolute inset-0 justify-center items-center flex" id="devicedelete">
+                                <form method="POST" action="/devices/delete">
+                                    <div class="bg-gray-100 max-w-sm py-5 px-8 rounded shadow-xl text-gray-700">
+                                        <div class="flex justify-between items-center">
+                                            <h3 class="text-lg font-bold">Delete device?</h3>
+                                            <span class="h-6 w-6 cursor-pointer hover:bg-gray-300 rounded-full close-modal" fill="currentColor"> × </span>
+                                        </div>
+                                        <div class="mt-2 text-sm">
+                                            <p>Are you sure you want to delete your <%= Device.device_name %> <%= Device.type_name %>?</p>
+                                            <input type="hidden" name="device_id" value="<%= Device.id %>" > 
+                                            <input type="hidden" name="device_name" value="<%= Device.device_name %>" >
+                                            <input type="hidden" name="device_type" value="<%= Device.type_name %>" >
+                                        </div>
+                                        <div class="mt-3 flex justify-end space-x-3">
+                                            <button type="button" class="px-3 py-1 rounded hover:bg-red-300 hover:bg-opacity-50 hover:text-red-900 close-modal">Cancel</button>
+                                            <button type="submit" class="px-3 py-1 bg-red-700 text-gray-200 hover:bg-red-500 rounded">Delete</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <% } %> 
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    
+    <script>
+
+        const devicedelete = document.querySelector('#devicedelete');
+        const delBtn = document.querySelector('#delete-btn');
+        const closeBtn = document.querySelectorAll('.close-modal');
+
+        delBtn.addEventListener('click', () => {
+            devicedelete.setAttribute('style',"display: flex;");
+        });
+        closeBtn.forEach((x) =>
+            x.addEventListener('click', () => {
+                devicedelete.setAttribute('style',"display: none;");
+            })
+        );
+
+        const alert_del = document.querySelectorAll('.alert-del');
+        alert_del.forEach((x) =>
+            x.addEventListener('click', () => {
+            x.parentElement.classList.add('hidden');
+            })
+        );
+    </script>
+    </body>
+</html>
